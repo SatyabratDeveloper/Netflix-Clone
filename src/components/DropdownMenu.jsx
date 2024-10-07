@@ -29,19 +29,23 @@ const DropdownMenu = () => {
     <div className="relative inline-block" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex items-center justify-center border border-gray-500 rounded-md px-4 py-[3px]"
+        className="w-32 h-8 flex items-center justify-evenly font-medium border border-gray-500 rounded-md cursor-default"
       >
-        <IoLanguage className="mr-1" />
-        <span>{selectedLanguage}</span>
-        <IoMdArrowDropdown className="ml-2.5" />
+        <div className="flex items-center">
+          <IoLanguage className="mr-1" />
+          <span>{selectedLanguage}</span>
+        </div>
+        <IoMdArrowDropdown className="" />
       </button>
       {isOpen && (
-        <ul className="absolute mt-2 w-32 bg-white border border-gray-500 rounded-md shadow-lg">
+        <ul className="absolute w-32 bg-white border border-gray-500 rounded-md shadow-lg">
           {Languages.map((language) => (
             <li
               key={language}
               onClick={() => handleSelect(language)}
-              className="text-black cursor-pointer px-4 py-2 hover:bg-gray-200"
+              className={`text-black cursor-default px-4 py-2 hover:bg-gray-200 ${
+                selectedLanguage ? "" : ""
+              }`}
             >
               {language}
             </li>
