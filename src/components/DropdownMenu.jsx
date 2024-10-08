@@ -29,13 +29,11 @@ const DropdownMenu = () => {
     <div className="relative inline-block" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen((prev) => !prev)}
-        className="w-32 h-8 flex items-center justify-evenly font-medium border border-gray-500 rounded-md cursor-default"
+        className="w-32 h-8 flex items-center justify-center font-normal border border-gray-500 rounded-md cursor-default"
       >
-        <div className="flex items-center">
-          <IoLanguage className="mr-1" />
-          <span>{selectedLanguage}</span>
-        </div>
-        <IoMdArrowDropdown className="" />
+        <IoLanguage className="mr-1.5" />
+        <span>{selectedLanguage}</span>
+        <IoMdArrowDropdown className="ml-2" />
       </button>
       {isOpen && (
         <ul className="absolute w-32 bg-white border border-gray-500 rounded-md shadow-lg">

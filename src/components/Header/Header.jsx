@@ -12,7 +12,7 @@ const Header = () => {
   const [isUserActive, setIsUserActive] = useState(false);
 
   return (
-    <div className="w-full fixed top-0 z-50">
+    <div className="w-full absolute top-0 z-50">
       {isUserActive ? (
         <div className="h-20 flex items-center mx-16 text-white">
           <img src={Logo} alt="Netflix_Logo" className="h-10" />
@@ -53,7 +53,7 @@ const Header = () => {
             <div className="w-full flex gap-3 justify-end">
               <DropdownMenu />
               <Button
-                class={"bg-red-600 px-4 py-1.5 rounded-md text-sm font-medium"}
+                class={"bg-red-600 px-4 py-1.5 rounded-md text-sm font-bold"}
                 title="Sign In"
               />
             </div>
