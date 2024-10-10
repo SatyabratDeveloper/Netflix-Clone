@@ -9,7 +9,9 @@ const LogoutHome = () => {
         <h1 className="text-6xl font-black text-center leading-tight">
           Unlimited movies, TV shows and more
         </h1>
-        <h2 className="text-xl font-bold my-7">Starts at ₹149. Cancel at any time.</h2>
+        <h2 className="text-xl font-bold my-7">
+          Starts at ₹149. Cancel at any time.
+        </h2>
         <p className="text-base font-normal">
           Ready to watch? Enter your email to create or restart your membership.
         </p>
@@ -17,12 +19,10 @@ const LogoutHome = () => {
         <div className="w-full my-4 flex justify-center gap-2">
           <Input type="email" label="Email address" />
           <Button
-            title="Get Started"
-            class={
-              "bg-red-600 w-52 rounded-md text-2xl font-bold flex justify-center items-center gap-4"
-            }
+            text="Get Started"
+            style="w-52 bg-red-600 hover:bg-red-700 text-2xl font-bold gap-4"
             icon={<FaChevronRight />}
-            iconClass={"text-lg"}
+            iconStyle={"text-lg"}
           />
         </div>
       </div>

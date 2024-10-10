@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Netflix Sans font CDN */
 @font-face {
   font-family: 'Netflix Sans';
   font-weight: 100;

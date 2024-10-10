@@ -3,10 +3,11 @@ import Avatar from "/images/avatar.png";
 import { NavItems } from "../../constants/constants";
 import { NavLink } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
-import { IoNotifications } from "react-icons/io5";
+import { IoNotifications, IoLanguage } from "react-icons/io5";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { useState } from "react";
 import { Button, DropdownMenu } from "../../components";
+import { Languages } from "../../constants/constants";
 
 const Header = () => {
   const [isUserActive, setIsUserActive] = useState(false);
@@ -51,10 +52,15 @@ const Header = () => {
           <img src={Logo} alt="Netflix_Logo" className="h-10" />
           <div className="flex w-full justify-between">
             <div className="w-full flex gap-3 justify-end">
-              <DropdownMenu />
+              <DropdownMenu
+                list={Languages}
+                style="w-32 h-8 "
+                icon={<IoLanguage />}
+                iconStyle="mr-1.5"
+              />
               <Button
-                class={"bg-red-600 px-4 py-1.5 rounded-md text-sm font-bold"}
-                title="Sign In"
+                text="Sign In"
+                style="w-20 bg-red-600 hover:bg-red-700 text-sm font-bold"
               />
             </div>
           </div>
