@@ -48,21 +48,15 @@ const Header = () => {
           </div>
         </div>
       ) : (
-        <div className="h-20 mt-1 mx-80 px-9 flex items-center text-white">
+        <div className="h-20 mt-1 mx-80 px-9 flex items-center justify-between text-white">
           <img src={Logo} alt="Netflix_Logo" className="h-10" />
-          <div className="flex w-full justify-between">
-            <div className="w-full flex gap-3 justify-end">
-              <DropdownMenu
-                list={Languages}
-                style="w-32 h-8 "
-                icon={<IoLanguage />}
-                iconStyle="mr-1.5"
-              />
-              <Button
-                text="Sign In"
-                style="w-20 bg-red-600 hover:bg-red-700 text-sm font-bold"
-              />
-            </div>
+
+          <div className="flex gap-3">
+            <DropdownMenu list={Languages} icon={<IoLanguage />} width={130} />
+            <Button
+              text="Sign In"
+              style="w-20 bg-red-600 hover:bg-red-700 text-sm font-bold"
+            />
           </div>
         </div>
       )}

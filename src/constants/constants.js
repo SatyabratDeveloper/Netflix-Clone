@@ -26,4 +26,7 @@ export const NavItems = [
   },
 ];
 
-export const Languages = ["English", "Hindi"];
+export const Languages = [
+  { code: "en", label: "English" },
+  { code: "hi", label: "Hindi" },
+];
