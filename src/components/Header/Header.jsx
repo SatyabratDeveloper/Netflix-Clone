@@ -54,8 +54,11 @@ const Header = () => {
           <div className="flex gap-3">
             <DropdownMenu list={Languages} icon={<IoLanguage />} width={130} />
             <Button
-              text="Sign In"
-              style="w-20 bg-red-600 hover:bg-red-700 text-sm font-bold"
+              type="primary"
+              width="w-20"
+              label="Sign In"
+              size="text-sm"
+              font="font-bold"
             />
           </div>
         </div>

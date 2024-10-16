@@ -19,10 +19,12 @@ const LogoutHome = () => {
         <div className="w-full my-4 flex justify-center gap-2">
           <Input type="email" label="Email address" />
           <Button
-            text="Get Started"
-            style="w-52 bg-red-600 hover:bg-red-700 text-2xl font-bold gap-4"
+            type="primary"
+            width="w-52"
+            label="Get Started"
+            size="text-2xl"
+            font="font-bold"
             icon={<FaChevronRight />}
-            iconStyle={"text-lg"}
           />
         </div>
       </div>
