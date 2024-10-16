@@ -15,8 +15,7 @@ const DropdownMenu = ({ list, icon, width }) => {
     <Listbox value={selected} onChange={setSelected}>
       <div className="relative">
         <ListboxButton
-          className={`flex justify-between items-center gap-3 py-1 px-2 cursor-default font-normal border border-neutral-500 rounded-md bg-black`}
-          style={{ width }}
+          className={`flex justify-between items-center gap-3 py-1 px-2 cursor-default text-white font-normal border border-neutral-500 rounded-md bg-black ${width}`}
         >
           <div className="flex items-center gap-2">
             {icon}
@@ -30,7 +29,9 @@ const DropdownMenu = ({ list, icon, width }) => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <ListboxOptions className="absolute mt-0.5 w-full rounded-md shadow-lg bg-white text-sm font-medium">
+          <ListboxOptions
+            className={`absolute mt-0.5 rounded-md shadow-lg bg-white text-sm font-medium ${width}`}
+          >
             {list.map((option) => (
               <ListboxOption
                 key={option.code}
