@@ -1,7 +1,7 @@
-import { PreSignup } from "../../components";
+import { PreSignup } from "..";
 import HomeBorder from "/images/home-border.png";
 
-const LogoutHome = () => {
+const GuestHome = () => {
   return (
     <div className="bg-homeBg h-screen text-white pt-20 flex justify-center">
       <div className="flex flex-col justify-center items-center h-full w-2/5">
@@ -22,4 +22,4 @@ const LogoutHome = () => {
     </div>
   );
 };
-export default LogoutHome;
+export default GuestHome;

@@ -1,7 +1,7 @@
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
-import LoginHome from "./Home/LoginHome";
-import LogoutHome from "./Home/LogoutHome";
+import UserHome from "./Home/UserHome";
+import GuestHome from "./Home/GuestHome";
 import PreSignup from "./Signup/PreSignup";
 import Signup from "./Signup/Signup";
 import Login from "./Login/Login";
@@ -12,8 +12,8 @@ import DropdownMenu from "./Generic/DropdownMenu";
 export {
   Header,
   Footer,
-  LoginHome,
-  LogoutHome,
+  UserHome,
+  GuestHome,
   PreSignup,
   Signup,
   Login,

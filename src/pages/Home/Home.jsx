@@ -1,13 +1,9 @@
 import { useState } from "react";
-import { LogoutHome, LoginHome } from "../../components";
+import { UserHome, GuestHome } from "../../components";
 
 const Home = () => {
-  const [isUserActive, setIsUserActive] = useState(true);
+  const [isUserActive, setIsUserActive] = useState(false);
 
-  return (
-    <div className="">
-      {isUserActive ? <LogoutHome /> : <LoginHome />}
-    </div>
-  );
+  return <div>{isUserActive ? <UserHome /> : <GuestHome />}</div>;
 };
 export default Home;
