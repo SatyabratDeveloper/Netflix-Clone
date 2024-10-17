@@ -1,10 +1,10 @@
-const Input = ({ label, type }) => {
+const Input = ({ label, type, width }) => {
   return (
     <div className="relative">
       <input
         type={type}
-        className="peer w-[28rem] p-4 block text-gray-100 border border-neutral-500 rounded-md bg-transparent text-base font-normal placeholder:text-transparent
-        focus:pt-6 focus:pb-2 [&:not(:placeholder-shown)]:pt-6 [&:not(:placeholder-shown)]:pb-2 autofill:pt-6 autofill:pb-2"
+        className={`peer p-4 block text-gray-100 border border-neutral-500 rounded-md bg-transparent text-base font-normal placeholder:text-transparent
+        focus:pt-6 focus:pb-2 [&:not(:placeholder-shown)]:pt-6 [&:not(:placeholder-shown)]:pb-2 autofill:pt-6 autofill:pb-2 ${width}`}
         placeholder={label}
       />
       <label

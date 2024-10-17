@@ -1,5 +1,4 @@
-import { Button, Input } from "../../components";
-import { FaChevronRight } from "react-icons/fa6";
+import { PreSignup } from "../../components";
 import HomeBorder from "/images/home-border.png";
 
 const LogoutHome = () => {
@@ -12,21 +11,8 @@ const LogoutHome = () => {
         <h2 className="text-xl font-bold my-7">
           Starts at ₹149. Cancel at any time.
         </h2>
-        <p className="text-base font-normal">
-          Ready to watch? Enter your email to create or restart your membership.
-        </p>
 
-        <div className="w-full my-4 flex justify-center gap-2">
-          <Input type="email" label="Email address" />
-          <Button
-            type="primary"
-            width="w-52"
-            label="Get Started"
-            size="text-2xl"
-            font="font-bold"
-            icon={<FaChevronRight />}
-          />
-        </div>
+        <PreSignup />
       </div>
       <img
         src={HomeBorder}
