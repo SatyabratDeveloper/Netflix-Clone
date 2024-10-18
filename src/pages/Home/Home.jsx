@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { UserHome, GuestHome } from "../../components";
+import { UserLandingPage, GuestLandingPage } from "../../components";
 
 const Home = () => {
   const [isUserActive, setIsUserActive] = useState(false);
 
-  return <div>{isUserActive ? <UserHome /> : <GuestHome />}</div>;
+  return <div>{isUserActive ? <UserLandingPage /> : <GuestLandingPage />}</div>;
 };
 export default Home;

@@ -1,23 +1,40 @@
-import Header from "./Header/Header";
-import Footer from "./Footer/Footer";
-import UserHome from "./Home/UserHome";
-import GuestHome from "./Home/GuestHome";
-import PreSignup from "./Signup/PreSignup";
-import Signup from "./Signup/Signup";
-import Login from "./Login/Login";
+// PageLayout Components
+import Header from "./PageLayout/Header";
+import Footer from "./PageLayout/Footer";
+
+// Navigation Components
+import UserNavBar from "./Navigation/UserNavBar";
+import GuestNavBar from "./Navigation/GuestNavBar";
+
+// Home Components
+import UserLandingPage from "./LandingPage/UserLandingPage";
+import GuestLandingPage from "./LandingPage/GuestLandingPage";
+
+// Authentication Components
+import PreSignupIntro from "./AuthPages/PreSignupIntro";
+import Signup from "./AuthPages/Signup";
+import Login from "./AuthPages/Login";
+
+// Utility Components
+import FAQSection from "./ContentUI/FAQSection";
+
+// Generic components
 import Button from "./Generic/Button";
-import Input from "./Generic/Input";
+import InputField from "./Generic/InputField";
 import DropdownMenu from "./Generic/DropdownMenu";
 
 export {
   Header,
   Footer,
-  UserHome,
-  GuestHome,
-  PreSignup,
+  UserNavBar,
+  GuestNavBar,
+  UserLandingPage,
+  GuestLandingPage,
+  PreSignupIntro,
   Signup,
   Login,
+  FAQSection,
   Button,
-  Input,
+  InputField,
   DropdownMenu,
 };

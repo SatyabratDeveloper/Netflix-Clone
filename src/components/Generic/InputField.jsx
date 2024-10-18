@@ -1,4 +1,4 @@
-const Input = ({ label, type, width }) => {
+const InputField = ({ label, type, width }) => {
   return (
     <div className="relative">
       <input
@@ -19,4 +19,4 @@ const Input = ({ label, type, width }) => {
     </div>
   );
 };
-export default Input;
+export default InputField;

@@ -1,14 +1,14 @@
-import { Input, Button } from "../../components";
+import { InputField, Button } from "..";
 import { FaChevronRight } from "react-icons/fa6";
 
-const PreSignup = () => {
+const PreSignupIntro = () => {
   return (
     <>
-      <p className="text-base font-normal">
+      <p className="text-base font-normal text-center">
         Ready to watch? Enter your email to create or restart your membership.
       </p>
       <div className="w-full my-4 flex justify-center gap-2">
-        <Input type="email" label="Email address" width="w-[28rem]" />
+        <InputField type="email" label="Email address" width="w-[28rem]" />
         <Button
           type="primary"
           width="w-52"
@@ -21,4 +21,4 @@ const PreSignup = () => {
     </>
   );
 };
-export default PreSignup;
+export default PreSignupIntro;
