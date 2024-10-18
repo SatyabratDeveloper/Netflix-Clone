@@ -1,4 +1,4 @@
-import { PreSignupIntro } from "..";
+import { FAQSection, PreSignupIntro } from "..";
 import HomeBorder from "/images/home-border.png";
 
 const GuestLandingPage = () => {
@@ -21,7 +21,10 @@ const GuestLandingPage = () => {
           className="absolute bottom-1 left-0"
         />
       </div>
-      <div className="text-white">
+      <div className="my-20">
+        <FAQSection />
+      </div>
+      <div className="text-white my-16">
         <PreSignupIntro />
       </div>
     </>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { UserNavBar, GuestNavBar } from "../../components";
+import { UserNavBar, GuestNavBar } from "..";
 
 const Header = () => {
   const [isUserActive, setIsUserActive] = useState(false);

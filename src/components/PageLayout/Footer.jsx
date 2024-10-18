@@ -1,5 +1,5 @@
 import { FooterItems } from "../../constants/constants";
-import { DropdownMenu } from "../../components";
+import { DropdownMenu } from "..";
 import { Languages } from "../../constants/constants";
 import { IoLanguage } from "react-icons/io5";
 

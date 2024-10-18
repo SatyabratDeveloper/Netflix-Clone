@@ -1,5 +1,5 @@
 import Logo from "/images/logo.svg";
-import { Button, DropdownMenu } from "../../components";
+import { Button, DropdownMenu } from "..";
 import { Languages } from "../../constants/constants";
 import { IoLanguage } from "react-icons/io5";
 
