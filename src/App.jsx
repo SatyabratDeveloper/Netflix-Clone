@@ -1,11 +1,21 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { Header, Footer } from "./components";
 
 function App() {
+  const location = useLocation();
+
   return (
     <div className="bg-black">
       <Header />
-      <Outlet />
+      <div
+        className={`${
+          location.pathname === "/" || location.pathname === "/login"
+            ? ""
+            : "pt-20"
+        }`}
+      >
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );

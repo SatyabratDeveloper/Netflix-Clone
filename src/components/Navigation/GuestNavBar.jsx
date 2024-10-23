@@ -1,24 +1,29 @@
-import Logo from "/images/logo.svg";
 import { Button, DropdownMenu } from "..";
 import { Languages } from "../../constants/constants";
 import { IoLanguage } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const GuestNavBar = () => {
   return (
-    <div className="h-20 mt-1 mx-80 px-9 flex items-center justify-between">
-      <img src={Logo} alt="Netflix_Logo" className="h-10" />
-
-      <div className="flex gap-3">
-        <DropdownMenu list={Languages} icon={<IoLanguage />} width="w-32" />
+    <div className="flex gap-3">
+      <DropdownMenu
+        list={Languages}
+        icon={<IoLanguage />}
+        height="h-8"
+        width="w-32"
+      />
+      <Link to="/login">
         <Button
-          type="primary"
+          buttonType="primary"
+          height="h-8"
           width="w-20"
           label="Sign In"
           size="text-sm"
           font="font-bold"
         />
-      </div>
+      </Link>
     </div>
   );
 };
+
 export default GuestNavBar;

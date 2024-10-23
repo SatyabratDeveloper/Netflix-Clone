@@ -8,14 +8,14 @@ import {
   Transition,
 } from "@headlessui/react";
 
-const DropdownMenu = ({ list, icon, width }) => {
+const DropdownMenu = ({ list, icon, height, width }) => {
   const [selected, setSelected] = useState(list[0]);
 
   return (
     <Listbox value={selected} onChange={setSelected}>
       <div className="relative">
         <ListboxButton
-          className={`flex justify-between items-center gap-3 py-1 px-2 cursor-default text-white font-normal border border-neutral-500 rounded-md bg-black ${width}`}
+          className={`flex justify-between items-center gap-3 py-1 px-2 cursor-default text-white font-normal border border-neutral-500 rounded-md bg-black ${height} ${width}`}
         >
           <div className="flex items-center gap-2">
             {icon}
@@ -53,4 +53,5 @@ const DropdownMenu = ({ list, icon, width }) => {
     </Listbox>
   );
 };
+
 export default DropdownMenu;
