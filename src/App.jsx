@@ -9,7 +9,9 @@ function App() {
       <Header />
       <div
         className={`${
-          location.pathname === "/" || location.pathname === "/login"
+          location.pathname === "/" ||
+          location.pathname === "/login" ||
+          location.pathname === "/signup"
             ? ""
             : "pt-20"
         }`}

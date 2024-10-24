@@ -24,7 +24,7 @@ const Login = () => {
         >
           {/* Email Input */}
           <InputField
-            type="text"
+            type="email"
             label="Email"
             width="w-full"
             errors={errors.email?.message}
@@ -47,14 +47,14 @@ const Login = () => {
             register={register("password", {
               required: "Please enter your password.",
               minLength: {
-                value: 4,
+                value: 8,
                 message:
-                  "Your password must contain between 4 and 60 characters.",
+                  "Your password must contain between 8 and 60 characters.",
               },
               maxLength: {
                 value: 60,
                 message:
-                  "Your password must contain between 4 and 60 characters.",
+                  "Your password must contain between 8 and 60 characters.",
               },
             })}
           />

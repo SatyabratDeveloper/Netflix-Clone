@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { InputError } from "../../components";
+import { InputError } from "..";
 
 const InputField = ({ label, type, width, errors, register }) => {
   const id = useId();

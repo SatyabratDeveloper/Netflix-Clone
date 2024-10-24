@@ -11,7 +11,7 @@ import UserLandingPage from "./LandingPage/UserLandingPage";
 import GuestLandingPage from "./LandingPage/GuestLandingPage";
 
 // Authentication Components
-import PreSignupIntro from "./AuthPages/PreSignupIntro";
+import Register from "./Auth/Register";
 
 // Utility Components
 import FAQSection from "./ContentUI/FAQSection";
@@ -29,7 +29,7 @@ export {
   GuestNavBar,
   UserLandingPage,
   GuestLandingPage,
-  PreSignupIntro,
+  Register,
   FAQSection,
   Button,
   InputField,

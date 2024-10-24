@@ -1,4 +1,4 @@
-import { FAQSection, PreSignupIntro } from "..";
+import { FAQSection, Register } from "..";
 import HomeBorder from "/images/home-border.png";
 
 const GuestLandingPage = () => {
@@ -13,7 +13,7 @@ const GuestLandingPage = () => {
             Starts at ₹149. Cancel at any time.
           </h2>
 
-          <PreSignupIntro />
+          <Register />
         </div>
         <img
           src={HomeBorder}
@@ -25,7 +25,7 @@ const GuestLandingPage = () => {
         <FAQSection />
       </div>
       <div className="text-white my-16">
-        <PreSignupIntro />
+        <Register />
       </div>
     </>
   );
