@@ -1,16 +1,46 @@
 import { useForm } from "react-hook-form";
 import { Button, InputField } from "../../components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  firebaseSignup,
+  firebaseUpdateUserProfile,
+} from "../../firebase/authService";
+import { useSelector } from "react-redux";
 
 const Signup = () => {
+  const navigate = useNavigate();
+  const registeredEmail = useSelector((state) => state.auth.registeredEmail);
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: { username: "", email: registeredEmail || "", password: "" },
+  });
 
-  const signup = (data) => {
-    console.log(data);
+  /**
+   * Function to sign up user using sign up form
+   * @param {username, email, password} data
+   */
+  const signup = async (data) => {
+    try {
+      const user = await firebaseSignup(data.email, data.password);
+      if (user) {
+        // Update user profile
+        try {
+          await firebaseUpdateUserProfile(data.username);
+        } catch {
+          console.log("User profile not updated.");
+        }
+
+        // navigate to home if user is signedup successfully
+        navigate("/");
+      } else {
+        console.log("Signup failed.");
+      }
+    } catch (error) {
+      console.error(`Signup :: signupUser :: error: ${error}`);
+    }
   };
 
   return (
@@ -48,6 +78,7 @@ const Signup = () => {
             type="email"
             label="Email"
             width="w-full"
+            value={registeredEmail}
             errors={errors.email?.message}
             register={register("email", {
               required: "Please enter your email.",
@@ -109,4 +140,5 @@ const Signup = () => {
     </div>
   );
 };
+
 export default Signup;

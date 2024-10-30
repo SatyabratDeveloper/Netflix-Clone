@@ -2,9 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { InputField, Button } from "..";
 import { FaChevronRight } from "react-icons/fa6";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { registeredEmail } from "../../store/authSlice";
 
 const Register = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -14,6 +17,7 @@ const Register = () => {
 
   const preSignup = (data) => {
     console.log(data);
+    dispatch(registeredEmail(data));
     navigate("/signup");
   };
 

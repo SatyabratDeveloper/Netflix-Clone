@@ -1,20 +1,21 @@
 import { useId } from "react";
 import { InputError } from "..";
 
-const InputField = ({ label, type, width, errors, register }) => {
+const InputField = ({ label, type, width, value, errors, register }) => {
   const id = useId();
 
   return (
     <>
-      <div className="relative">
+      <div className={`relative ${value ? "opacity-50" : ""}`}>
         <input
           type={type}
           id={id}
           autoComplete="off"
           placeholder={label}
+          disabled={value}
           {...register}
-          className={`peer p-3.5 block text-gray-100 border rounded-md bg-transparent text-base font-normal placeholder:text-transparent
-        focus:pt-6 focus:pb-2 [&:not(:placeholder-shown)]:pt-6 [&:not(:placeholder-shown)]:pb-2 autofill:pt-6 autofill:pb-2 h-[3.5rem] ${width} ${
+          className={`peer p-3.5 block text-gray-100 border rounded-md bg-transparent text-base font-normal placeholder:text-transparent focus:pt-6
+            focus:pb-2 [&:not(:placeholder-shown)]:pt-6 [&:not(:placeholder-shown)]:pb-2 autofill:pt-6 autofill:pb-2 h-[3.5rem] ${width} ${
             errors ? "border-red-600" : "border-neutral-500"
           }`}
         />
