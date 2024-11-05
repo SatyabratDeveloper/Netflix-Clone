@@ -1,16 +1,33 @@
 import { useForm } from "react-hook-form";
 import { Button, InputField } from "../../components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { firebaseSignin } from "../../firebase/authService";
 
 const Login = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const login = (data) => {
-    console.log(data);
+  /**
+   * Function to Log in a user using log in form
+   * @param {email, password}
+   */
+  const login = async ({ email, password }) => {
+    try {
+      const user = await firebaseSignin(email, password);
+      if (user) {
+        console.log("User name:", user.displayName);
+        // navigate to home if user is logged in successfully
+        navigate("/");
+      } else {
+        console.log("No user found. Please try again.");
+      }
+    } catch (error) {
+      console.log(`Login :: login :: error: ${error}`);
+    }
   };
 
   return (

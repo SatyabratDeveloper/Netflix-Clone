@@ -22,13 +22,13 @@ const Signup = () => {
    * Function to sign up user using sign up form
    * @param {username, email, password} data
    */
-  const signup = async (data) => {
+  const signup = async ({ username, email, password }) => {
     try {
-      const user = await firebaseSignup(data.email, data.password);
+      const user = await firebaseSignup(email, password);
       if (user) {
         // Update user profile
         try {
-          await firebaseUpdateUserProfile(data.username);
+          await firebaseUpdateUserProfile(username);
         } catch {
           console.log("User profile not updated.");
         }
@@ -39,7 +39,7 @@ const Signup = () => {
         console.log("Signup failed.");
       }
     } catch (error) {
-      console.error(`Signup :: signupUser :: error: ${error}`);
+      console.error(`Signup :: signup :: error: ${error}`);
     }
   };
 
