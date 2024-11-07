@@ -5,10 +5,13 @@ import {
   firebaseSignup,
   firebaseUpdateUserProfile,
 } from "../../firebase/authService";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { login as userLogin } from "../../store/authSlice";
+import { extractUserInfo } from "../../utils/userAuth";
 
 const Signup = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const registeredEmail = useSelector((state) => state.auth.registeredEmail);
   const {
     register,
@@ -25,19 +28,22 @@ const Signup = () => {
   const signup = async ({ username, email, password }) => {
     try {
       const user = await firebaseSignup(email, password);
-      if (user) {
-        // Update user profile
-        try {
-          await firebaseUpdateUserProfile(username);
-        } catch {
-          console.log("User profile not updated.");
-        }
 
-        // navigate to home if user is signedup successfully
-        navigate("/");
-      } else {
-        console.log("Signup failed.");
+      if (!user) {
+        console.log("Signup failed. Please try again.");
+        return;
       }
+
+      // Update user profile with username
+      try {
+        await firebaseUpdateUserProfile(username);
+      } catch (error) {
+        console.warn("Profile update failed:", error);
+      }
+
+      // Dispatch user info and navigate to home on successful signup
+      dispatch(userLogin(extractUserInfo(user)));
+      navigate("/");
     } catch (error) {
       console.error(`Signup :: signup :: error: ${error}`);
     }

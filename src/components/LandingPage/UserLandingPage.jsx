@@ -1,4 +1,4 @@
 const UserLandingPage = () => {
-  return <div>LoginHome</div>;
+  return <div className="text-white">LoginHome</div>;
 };
 export default UserLandingPage;

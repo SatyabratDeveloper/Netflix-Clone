@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { UserLandingPage, GuestLandingPage } from "../../components";
+import { useSelector } from "react-redux";
 
 const Home = () => {
-  const [isUserActive, setIsUserActive] = useState(false);
+  const userStatus = useSelector((state) => state.auth.status);
 
-  return <div>{isUserActive ? <UserLandingPage /> : <GuestLandingPage />}</div>;
+  return <div>{userStatus ? <UserLandingPage /> : <GuestLandingPage />}</div>;
 };
 export default Home;
