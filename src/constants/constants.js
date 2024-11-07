@@ -15,8 +15,8 @@ export const NavItems = [
     active: false,
   },
   {
-    name: "Recently Added",
-    slug: "/recentlyadded",
+    name: "New & Popular",
+    slug: "/newandpopular",
     active: false,
   },
   {
