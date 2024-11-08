@@ -1,3 +1,7 @@
+import { MdOutlineEdit } from "react-icons/md";
+import { RiUserLine } from "react-icons/ri";
+import { IoMdHelpCircleOutline } from "react-icons/io";
+
 export const NavItems = [
   {
     name: "Home",
@@ -23,6 +27,27 @@ export const NavItems = [
     name: "My List",
     slug: "/mylist",
     active: false,
+  },
+];
+
+export const UserProfile = [
+  {
+    id: 1,
+    slug: "manageprofiles",
+    label: "Manage Profiles",
+    icon: MdOutlineEdit,
+  },
+  {
+    id: 2,
+    slug: "account",
+    label: "Account",
+    icon: RiUserLine,
+  },
+  {
+    id: 3,
+    slug: "helpcenter",
+    label: "Help Center",
+    icon: IoMdHelpCircleOutline,
   },
 ];
 
