@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Button, InputField } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
-import { firebaseSignin } from "../../firebase/authService";
 import { useDispatch } from "react-redux";
 import { login as userLogin } from "../../store/authSlice";
 import { extractUserInfo } from "../../utils/userAuth";
@@ -20,23 +19,21 @@ const Login = () => {
    * @param {email, password}
    */
   const login = async ({ email, password }) => {
-    try {
-      const user = await firebaseSignin(email, password);
-
-      if (!user) {
-        console.log(
-          "Login failed. Please check your email and password and try again."
-        );
-        return;
-      }
-
-      // Dispatch user info and navigate to home on successful login
-      dispatch(userLogin(extractUserInfo(user)));
-      navigate("/");
-    } catch (error) {
-      console.log("Something went wrong. Please try again later.");
-      console.log(`Login :: login :: error: ${error}`);
-    }
+    // try {
+    // const user = await firebaseSignin(email, password);
+    // if (!user) {
+    //   console.log(
+    //     "Login failed. Please check your email and password and try again."
+    //   );
+    //   return;
+    // }
+    // Dispatch user info and navigate to home on successful login
+    //   dispatch(userLogin(extractUserInfo(user)));
+    //   navigate("/");
+    // } catch (error) {
+    //   console.log("Something went wrong. Please try again later.");
+    //   console.log(`Login :: login :: error: ${error}`);
+    // }
   };
 
   return (

@@ -3,7 +3,6 @@ import { NavItems, UserProfile } from "../../constants/constants";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/react";
 import { useSelector, useDispatch } from "react-redux";
-import { firebaseSignOut } from "../../firebase/authService";
 import { logout } from "../../store/authSlice";
 import { FaSearch } from "react-icons/fa";
 import { IoNotifications } from "react-icons/io5";
@@ -17,7 +16,7 @@ const UserNavBar = () => {
 
   const signout = async () => {
     try {
-      await firebaseSignOut();
+      // await firebaseSignOut();
       dispatch(logout());
     } catch (error) {
       console.log("Something went wrong. Please try again later.");

@@ -1,10 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Button, InputField } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  firebaseSignup,
-  firebaseUpdateUserProfile,
-} from "../../firebase/authService";
 import { useSelector, useDispatch } from "react-redux";
 import { login as userLogin } from "../../store/authSlice";
 import { extractUserInfo } from "../../utils/userAuth";
@@ -27,22 +23,22 @@ const Signup = () => {
    */
   const signup = async ({ username, email, password }) => {
     try {
-      const user = await firebaseSignup(email, password);
+      // const user = await firebaseSignup(email, password);
 
-      if (!user) {
-        console.log("Signup failed. Please try again.");
-        return;
-      }
+      // if (!user) {
+      //   console.log("Signup failed. Please try again.");
+      //   return;
+      // }
 
       // Update user profile with username
       try {
-        await firebaseUpdateUserProfile(username);
+        // await firebaseUpdateUserProfile(username);
       } catch (error) {
         console.warn("Profile update failed:", error);
       }
 
       // Dispatch user info and navigate to home on successful signup
-      dispatch(userLogin(extractUserInfo(user)));
+      // dispatch(userLogin(extractUserInfo(user)));
       navigate("/");
     } catch (error) {
       console.error(`Signup :: signup :: error: ${error}`);
