@@ -8,15 +8,17 @@ import { BASE_URL, TMDB_BASE_KEY } from "../constants.js";
  * @returns {string} - A query string
  */
 const generateQueryParams = ({
+  query,
   include_adult,
   include_video,
   language,
   page,
 }) => {
+  const queryString = query ? `&query=${query}` : ``;
   const lang = language ? `&language=${language}` : "&language=en-US";
   const pageIndex = page ? `&page=${page}` : "&page=1";
 
-  const queryParams = `&include_adult=${include_adult}&include_video=${include_video}${lang}${pageIndex}`;
+  const queryParams = `${queryString}&include_adult=${include_adult}&include_video=${include_video}${lang}${pageIndex}`;
 
   return queryParams;
 };
@@ -50,8 +52,9 @@ const tmdbAPI = async (url) => {
 /**
  * Async function to fetch discover data from the TMDB API
  * @param {Object} req - The Express request object
+ * @param {mediaType, include_adult, include_video, language, page} req.body - endpoints and query params for url
  * @param {Object} res - The Express response object.
- * @returns {Promise<object>} - JSON response with the discovered data
+ * @returns {Promise<object>} - JSON response with the discovered data (API Response)
  */
 const discoverAPI = asyncHandler(async (req, res) => {
   const { mediaType, include_adult, include_video, language, page } = req.body;
@@ -73,5 +76,84 @@ const discoverAPI = asyncHandler(async (req, res) => {
     );
 });
 
-export { discoverAPI };
-1;
+/**
+ * Async function to fetch trending data from the TMDB API
+ * @param {Object} req - The Express request object
+ * @param {mediaType, include_adult, include_video, language, page} req.body - endpoints and query params for url
+ * @param {Object} res - The Express response object.
+ * @returns {Promise<object>} - JSON response with the discovered data (API Response)
+ */
+const trendingAPI = asyncHandler(async (req, res) => {
+  const { mediaType, include_adult, include_video, language, page } = req.body;
+
+  const queryParams = generateQueryParams({
+    include_adult,
+    include_video,
+    language,
+    page,
+  });
+
+  const url = `${BASE_URL}/trending/${mediaType}${TMDB_BASE_KEY}${queryParams}`;
+  const trendingData = await tmdbAPI(url);
+
+  return res
+    .status(200)
+    .json(
+      APIResponse(200, trendingData, "Trending data fetched successfully.")
+    );
+});
+
+/**
+ * Async function to fetch search data from the TMDB API
+ * @param {Object} req - The Express request object
+ * @param {mediaType, query, include_adult, include_video, language, page} req.body - endpoints and query params for url
+ * @param {Object} res - The Express response object.
+ * @returns {Promise<object>} - JSON response with the discovered data (API Response)
+ */
+const searchAPI = asyncHandler(async (req, res) => {
+  const { mediaType, query, include_adult, include_video, language, page } =
+    req.body;
+
+  const queryParams = generateQueryParams({
+    query,
+    include_adult,
+    include_video,
+    language,
+    page,
+  });
+
+  const url = `${BASE_URL}/search/${mediaType}${TMDB_BASE_KEY}${queryParams}`;
+  const searchData = await tmdbAPI(url);
+
+  return res
+    .status(200)
+    .json(APIResponse(200, searchData, "Search data fetched successfully."));
+});
+
+/**
+ * Async function to fetch filtered media type data (now playing, popular, top rated, upcoming) from the TMDB API
+ * @param {Object} req - The Express request object
+ * @param {mediaType, filter, include_adult, include_video, language, page} req.body - endpoints and query params for url
+ * @param {Object} res - The Express response object.
+ * @returns {Promise<object>} - JSON response with the discovered data (API Response)
+ */
+const filterAPI = asyncHandler(async (req, res) => {
+  const { mediaType, filter, include_adult, include_video, language, page } =
+    req.body;
+
+  const queryParams = generateQueryParams({
+    include_adult,
+    include_video,
+    language,
+    page,
+  });
+
+  const url = `${BASE_URL}/${mediaType}/${filter}${TMDB_BASE_KEY}${queryParams}`;
+  const searchData = await tmdbAPI(url);
+
+  return res
+    .status(200)
+    .json(APIResponse(200, searchData, "Search data fetched successfully."));
+});
+
+export { discoverAPI, trendingAPI, searchAPI, filterAPI };
