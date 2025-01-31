@@ -6,7 +6,7 @@ dotenv.config();
 
 const PORT = process.env.PORT;
 
-// connect mongoDB and start express server
+// Connect to MongoDB and start the Express server.
 connectDB()
   .then(() => {
     app.on("error", (error) => console.log("Express error:", error));

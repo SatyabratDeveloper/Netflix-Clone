@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
 import { DB_NAME } from "../constants.js";
 
+/**
+ * Async function to connect mongoDB
+ */
 const connectDB = async () => {
   try {
     const connectionInstance = await mongoose.connect(

@@ -1,3 +1,10 @@
+/**
+ * Class to standardize API responses
+ *
+ * @param {number} statusCode - The HTTP status code for the response
+ * @param {Object} data - The payload to be returned in the response
+ * @param {string} message - Message describing the response (default: "Success")
+ */
 class APIResponse {
   constructor(statusCode, data, message = "Success") {
     this.statusCode = statusCode;

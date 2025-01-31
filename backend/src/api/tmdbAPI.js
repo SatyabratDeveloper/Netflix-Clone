@@ -2,10 +2,10 @@ import { APIError, APIResponse, asyncHandler } from "../utils/index.js";
 import { BASE_URL, TMDB_BASE_KEY } from "../constants.js";
 
 /**
- * Function generates query params of URL
+ * Generates query parameters for a URL based on provided options
  *
- * @param {include_adult, include_video, language, page} param
- * @returns queryParams
+ * @param {{include_adult: boolean, include_video: boolean, language: string, page: number}} param - query parameters
+ * @returns {string} - A query string
  */
 const generateQueryParams = ({
   include_adult,
@@ -22,10 +22,11 @@ const generateQueryParams = ({
 };
 
 /**
- * Function to fetch tmdbAPI data using URL
+ * Fetches data from the TMDB API using the provided URL
  *
- * @param {url} url
- * @returns jsonData | APIError
+ * @param {string} url - TMDB url to fetch data
+ * @returns {object} - The JSON data returned by the TMDB API
+ * @throws {APIError} - Throws an APIError if the data is not found or if there is a server error
  */
 const tmdbAPI = async (url) => {
   try {
@@ -47,7 +48,10 @@ const tmdbAPI = async (url) => {
 };
 
 /**
- * Async function to fetch netflix - discover data
+ * Async function to fetch discover data from the TMDB API
+ * @param {Object} req - The Express request object
+ * @param {Object} res - The Express response object.
+ * @returns {Promise<object>} - JSON response with the discovered data
  */
 const discoverAPI = asyncHandler(async (req, res) => {
   const { mediaType, include_adult, include_video, language, page } = req.body;
@@ -69,4 +73,5 @@ const discoverAPI = asyncHandler(async (req, res) => {
     );
 });
 
-export { discoverAPI }; 1
+export { discoverAPI };
+1;
