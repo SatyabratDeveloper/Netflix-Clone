@@ -20,7 +20,7 @@ const videoSchema = new Schema(
     },
     maturityRating: {
       type: String,
-      required: true,
+      required: [true, "Maturity Rating is required."],
     },
     genre: [
       {

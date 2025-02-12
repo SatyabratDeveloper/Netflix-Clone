@@ -20,7 +20,7 @@ const tvShowSchema = new Schema(
     },
     maturityRating: {
       type: String,
-      required: true,
+      required: [true, "Maturity Rating is required."],
     },
     genre: [
       {
@@ -46,7 +46,7 @@ const tvShowSchema = new Schema(
       type: String,
       required: [true, "Thumbnail is Required."],
     },
-    VideoFile: [
+    VideoFiles: [
       {
         type: Schema.Types.ObjectId,
         ref: "Video",

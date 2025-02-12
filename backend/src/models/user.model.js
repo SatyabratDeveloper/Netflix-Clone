@@ -1,4 +1,6 @@
 import mongoose, { Schema } from "mongoose";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 const userSchema = new Schema(
   {
@@ -6,6 +8,7 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Display name is required."],
       trim: true,
+      index: true,
     },
     email: {
       type: String,
@@ -53,5 +56,51 @@ const userSchema = new Schema(
   },
   { timestamps: true }
 );
+
+/**
+ * Mongoose hook to hash password
+ */
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
+
+  this.password = await bcrypt.hash(this.password, 10);
+  next();
+});
+
+/**
+ * Mongoose custom hook to check password
+ *
+ * @param {string} password - password to be compared
+ * @returns {boolean} - password is correct or not
+ */
+userSchema.methods.isPasswordCorrect = async function (password) {
+  return await bcrypt.compare(password, this.password);
+};
+
+/**
+ * Mongoose custom hook to generate access token
+ *
+ * @returns {string} - token
+ */
+userSchema.methods.generateAccessToken = function () {
+  return jwt.sign(
+    { _id: this._id, displayName: this.displayName, email: this.email },
+    process.env.ACCESS_TOKEN_SECRET,
+    {
+      expiresIn: process.env.ACCESS_TOKEN_EXPIRY,
+    }
+  );
+};
+
+/**
+ * Mongoose custom hook to generate refresh token
+ *
+ * @returns {string} - token
+ */
+userSchema.methods.generateRefreshToken = function () {
+  return jwt.sign({ _id: this._id }, process.env.REFRESH_TOKEN_SECRET, {
+    expiresIn: process.env.REFRESH_TOKEN_EXPIRY,
+  });
+};
 
 export const User = mongoose.model("User", userSchema);
