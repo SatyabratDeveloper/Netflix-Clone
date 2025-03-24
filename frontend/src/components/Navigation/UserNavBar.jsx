@@ -7,6 +7,7 @@ import { logout } from "../../store/authSlice";
 import { FaSearch } from "react-icons/fa";
 import { IoNotifications } from "react-icons/io5";
 import { IoMdArrowDropdown } from "react-icons/io";
+import axios from "axios";
 
 const UserNavBar = () => {
   const dispatch = useDispatch();
@@ -14,11 +15,14 @@ const UserNavBar = () => {
 
   const signout = async () => {
     try {
-      // await firebaseSignOut();
+      await axios.post("/api/v1/users/logout");
       dispatch(logout());
     } catch (error) {
-      console.log("Something went wrong. Please try again later.");
-      console.log(`UserNavBar :: signout :: error: ${error}`);
+      console.error(
+        `UserNavBar :: signout :: error: ${
+          error.response?.data?.message || error.message
+        }`
+      );
     }
   };
 

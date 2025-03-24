@@ -87,7 +87,9 @@ const loginUser = asyncHandler(async (req, res) => {
   if (!isPasswordCorrect) throw new APIError(400, "Password is invalid.");
 
   // generate refresh and access tokens
-  const { accessToken, refreshToken } = generateAccessAndRefreshToken(user._id);
+  const { accessToken, refreshToken } = await generateAccessAndRefreshToken(
+    user._id
+  );
 
   // update user because refresh token is not update here in user
   // we can query in DB or update the user object to update refresh token
