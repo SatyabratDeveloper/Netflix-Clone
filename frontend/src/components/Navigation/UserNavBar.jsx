@@ -10,9 +10,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 
 const UserNavBar = () => {
   const dispatch = useDispatch();
-  const userDisplayName = useSelector(
-    (state) => state.auth.userData?.displayName
-  );
+  const username = useSelector((state) => state.auth.userData?.username);
 
   const signout = async () => {
     try {
@@ -63,7 +61,7 @@ const UserNavBar = () => {
           >
             <div className="flex items-center gap-3 my-3 mx-3 cursor-default">
               <img src={Avatar} alt="User_Avatar" className="h-7 rounded-sm" />
-              <span>{userDisplayName || "User"}</span>
+              <span>{username || "User"}</span>
             </div>
 
             <div className="h-0.5 bg-white/5" />

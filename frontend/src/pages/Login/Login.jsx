@@ -17,24 +17,24 @@ const Login = () => {
 
   /**
    * Function to Log in a user using log in form
-   * @param {email, password}
+   * @param {email, password} credentials
    */
   const login = async (credentials) => {
     try {
       const { data } = await axios.post("/api/v1/users/login", credentials, {
         withCredentials: true,
       });
-      console.log("Login successful:", data);
+      console.log("Login successfully:", data);
 
       // Dispatch user info and navigate to home
       dispatch(userLogin(extractUserInfo(data.data.user)));
       navigate("/");
     } catch (error) {
       console.error(
-        "Login error:",
-        error.response?.data?.message || error.message
+        `Login :: login :: error: ${
+          error.response?.data?.message || error.message
+        }`
       );
-      throw error;
     }
   };
 

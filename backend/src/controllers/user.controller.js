@@ -10,10 +10,10 @@ const options = {
 
 const registerUser = asyncHandler(async (req, res) => {
   // get user data from frontend
-  const { displayName, email, password } = req.body;
+  const { username, email, password } = req.body;
 
   // validation
-  if ([displayName, email, password].some((field) => field?.trim() === "")) {
+  if ([username, email, password].some((field) => field?.trim() === "")) {
     throw new APIError(400, "All field are required.");
   }
 
@@ -27,7 +27,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   // create user object in db - create entry in db
   const user = await User.create({
-    displayName: displayName.toLowerCase(),
+    username: username.toLowerCase(),
     email,
     password,
     avatar: "avatar",
@@ -148,16 +148,16 @@ const changeCurrentPassword = asyncHandler(async (req, res) => {
 });
 
 const updateAccountDetails = asyncHandler(async (req, res) => {
-  const { displayName, email } = req.body;
+  const { username, email } = req.body;
 
-  if (!(displayName && email)) {
+  if (!(username && email)) {
     throw new APIError(400, "Fields are empty.");
   }
 
   const user = await User.findByIdAndUpdate(
     req.user?._id,
     {
-      $set: { displayName, email },
+      $set: { username, email },
     },
     { new: true }
   ).select("-password");

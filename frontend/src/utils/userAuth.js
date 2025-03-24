@@ -1,7 +1,7 @@
 const extractUserInfo = (user) => {
   const {
     _id,
-    displayName,
+    username,
     email,
     avatar,
     moviesWatchHistory,
@@ -11,7 +11,7 @@ const extractUserInfo = (user) => {
   } = user;
   return {
     uid: _id,
-    displayName,
+    username,
     email,
     avatar,
     moviesWatchHistory,

@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 const userSchema = new Schema(
   {
-    displayName: {
+    username: {
       type: String,
       required: [true, "Display name is required."],
       trim: true,
@@ -84,7 +84,7 @@ userSchema.methods.isPasswordCorrect = async function (password) {
  */
 userSchema.methods.generateAccessToken = function () {
   return jwt.sign(
-    { _id: this._id, displayName: this.displayName, email: this.email },
+    { _id: this._id, username: this.username, email: this.email },
     process.env.ACCESS_TOKEN_SECRET,
     {
       expiresIn: process.env.ACCESS_TOKEN_EXPIRY,
