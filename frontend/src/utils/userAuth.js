@@ -1,6 +1,24 @@
 const extractUserInfo = (user) => {
-  const { uid, displayName, email, phoneNumber, photoURL } = user;
-  return { uid, displayName, email, phoneNumber, photoURL };
+  const {
+    _id,
+    displayName,
+    email,
+    avatar,
+    moviesWatchHistory,
+    tvShowsWatchHistory,
+    myMoviesList,
+    myTvShowsList,
+  } = user;
+  return {
+    uid: _id,
+    displayName,
+    email,
+    avatar,
+    moviesWatchHistory,
+    tvShowsWatchHistory,
+    myMoviesList,
+    myTvShowsList,
+  };
 };
 
 export { extractUserInfo };

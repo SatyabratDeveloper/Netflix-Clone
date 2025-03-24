@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login as userLogin } from "../../store/authSlice";
 import { extractUserInfo } from "../../utils/userAuth";
+import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -18,22 +19,23 @@ const Login = () => {
    * Function to Log in a user using log in form
    * @param {email, password}
    */
-  const login = async ({ email, password }) => {
-    // try {
-    // const user = await firebaseSignin(email, password);
-    // if (!user) {
-    //   console.log(
-    //     "Login failed. Please check your email and password and try again."
-    //   );
-    //   return;
-    // }
-    // Dispatch user info and navigate to home on successful login
-    //   dispatch(userLogin(extractUserInfo(user)));
-    //   navigate("/");
-    // } catch (error) {
-    //   console.log("Something went wrong. Please try again later.");
-    //   console.log(`Login :: login :: error: ${error}`);
-    // }
+  const login = async (credentials) => {
+    try {
+      const { data } = await axios.post("/api/v1/users/login", credentials, {
+        withCredentials: true,
+      });
+      console.log("Login successful:", data);
+
+      // Dispatch user info and navigate to home
+      dispatch(userLogin(extractUserInfo(data.data.user)));
+      navigate("/");
+    } catch (error) {
+      console.error(
+        "Login error:",
+        error.response?.data?.message || error.message
+      );
+      throw error;
+    }
   };
 
   return (
