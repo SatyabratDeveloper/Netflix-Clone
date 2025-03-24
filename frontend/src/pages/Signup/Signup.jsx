@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { login as userLogin } from "../../store/authSlice";
 import { extractUserInfo } from "../../utils/userAuth";
+import axios from "axios";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -19,29 +20,25 @@ const Signup = () => {
 
   /**
    * Function to sign up user using sign up form
-   * @param {username, email, password} data
+   * @param {username, email, password} credentials
    */
-  const signup = async ({ username, email, password }) => {
+  const signup = async (credentials) => {
+    console.log(credentials);
     try {
-      // const user = await firebaseSignup(email, password);
+      const { data } = await axios.post("/api/v1/users/register", credentials, {
+        withCredentials: true,
+      });
+      console.log("Signup successfully:", data.data);
 
-      // if (!user) {
-      //   console.log("Signup failed. Please try again.");
-      //   return;
-      // }
-
-      // Update user profile with username
-      try {
-        // await firebaseUpdateUserProfile(username);
-      } catch (error) {
-        console.warn("Profile update failed:", error);
-      }
-
-      // Dispatch user info and navigate to home on successful signup
-      // dispatch(userLogin(extractUserInfo(user)));
+      // Dispatch user info and navigate to home
+      dispatch(userLogin(extractUserInfo(data.data)));
       navigate("/");
     } catch (error) {
-      console.error(`Signup :: signup :: error: ${error}`);
+      console.error(
+        `Signup :: signup :: error: ${
+          error.response?.data?.message || error.message
+        }`
+      );
     }
   };
 
