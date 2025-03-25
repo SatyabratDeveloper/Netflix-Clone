@@ -4,9 +4,8 @@ import { Link, NavLink } from "react-router-dom";
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/react";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/authSlice";
-import { FaSearch } from "react-icons/fa";
-import { IoNotifications } from "react-icons/io5";
-import { IoMdArrowDropdown } from "react-icons/io";
+import { IoSearchOutline } from "react-icons/io5";
+import { IoMdArrowDropdown, IoMdNotificationsOutline } from "react-icons/io";
 import axios from "axios";
 
 const UserNavBar = () => {
@@ -28,12 +27,12 @@ const UserNavBar = () => {
 
   return (
     <div className="flex w-full justify-between text-white">
-      <div className="flex items-center ml-10 gap-5">
+      <div className="flex items-center ml-10 gap-6 text-sm font-light">
         {NavItems.map((NavItem) => (
           <NavLink
             key={NavItem.name}
             to={NavItem.slug}
-            className={({ isActive }) => (isActive ? "font-bold" : "")}
+            className={({ isActive }) => (isActive ? "font-semibold" : "")}
           >
             {NavItem.name}
           </NavLink>
@@ -43,50 +42,52 @@ const UserNavBar = () => {
       <div className="flex gap-5">
         {/* Search button */}
         <button className="">
-          <FaSearch className="size-5" />
+          <IoSearchOutline className="size-6" />
         </button>
 
         {/* Notification */}
         <button className="">
-          <IoNotifications className="size-5" />
+          <IoMdNotificationsOutline className="size-6" />
         </button>
+
+        {/* // TODO: add children functionality */}
 
         {/* User account */}
         <Menu>
           <MenuButton className="flex items-center gap-1">
-            <img src={Avatar} alt="User_Avatar" className="h-7 rounded-sm" />
+            <img src={Avatar} alt="User_Avatar" className="h-8 rounded-md" />
             <IoMdArrowDropdown className="size-5" />
           </MenuButton>
 
           <MenuItems
             transition
             anchor="bottom end"
-            className="mt-1 w-52 rounded-sm bg-black/75 text-sm text-white shadow-lg transition duration-100 ease-out"
+            className="mt-1 w-52 rounded-sm bg-black/95 text-sm text-white shadow-lg transition duration-100 ease-in-out"
           >
-            <div className="flex items-center gap-3 my-3 mx-3 cursor-default">
+            <div className="flex items-center gap-3 h-12 mx-3 cursor-default">
               <img src={Avatar} alt="User_Avatar" className="h-7 rounded-sm" />
               <span>{username || "User"}</span>
             </div>
 
-            <div className="h-0.5 bg-white/5" />
+            <div className="h-0.5 bg-white/20" />
 
             {UserProfile.map((userProfileItem) => (
-              <MenuItem key={userProfileItem.id} className="my-3 mx-3">
+              <MenuItem key={userProfileItem.id} className="my-3 mx-4">
                 <Link
                   to={userProfileItem.slug}
                   className="flex items-center gap-3 hover:underline"
                 >
-                  <userProfileItem.icon className="text-xl" />
+                  <userProfileItem.icon className="text-2xl" />
                   <span>{userProfileItem.label}</span>
                 </Link>
               </MenuItem>
             ))}
 
-            <div className="h-0.5 bg-white/5" />
+            <div className="h-0.5 bg-white/20" />
 
             <button
               onClick={signout}
-              className="my-3 w-full hover:text-neutral-300"
+              className="h-12 w-full hover:text-neutral-300 hover:underline"
             >
               Sign out of Netflix
             </button>

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { UserNavBar, GuestNavBar } from "..";
 import Logo from "/images/logo.svg";
 import { Link, useLocation } from "react-router-dom";
@@ -10,15 +11,37 @@ const Header = () => {
   console.log("User status:", userStatus);
   console.log("User Data:", userData);
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="w-full absolute top-0 z-50">
+    <div
+      className={`w-full top-0 transition-all duration-300 ${
+        userStatus ? "fixed" : "absolute"
+      } ${
+        isScrolled && userStatus
+          ? "bg-black"
+          : "bg-gradient-to-t from-transparent to-black/25"
+      }`}
+    >
       <div
-        className={`h-20 flex items-center justify-between mt-1 ${
-          userStatus ? "mx-16" : "mx-80 px-10"
+        className={`flex items-center justify-between ${
+          userStatus ? "mx-16 my-4" : "mx-80 px-9 my-6"
         } `}
       >
         <Link to="/">
-          <img src={Logo} alt="Netflix_Logo" className="h-10" />
+          <img
+            src={Logo}
+            alt="Netflix_Logo"
+            className={`${userStatus ? "h-7" : "h-10"}`}
+          />
         </Link>
 
         {userStatus ? (

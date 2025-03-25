@@ -1,5 +1,5 @@
 import { MdOutlineEdit } from "react-icons/md";
-import { RiUserLine } from "react-icons/ri";
+import { HiOutlineUser } from "react-icons/hi2";
 import { IoMdHelpCircleOutline } from "react-icons/io";
 
 export const NavItems = [
@@ -41,7 +41,7 @@ export const UserProfile = [
     id: 2,
     slug: "account",
     label: "Account",
-    icon: RiUserLine,
+    icon: HiOutlineUser,
   },
   {
     id: 3,
