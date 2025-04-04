@@ -31,7 +31,16 @@ const useTmdbQueries = (queryList) => {
 
             // Fetch data
             const data = await mediaBrowserFunction({ mediaType, filterType });
-            return { query: item, data };
+
+            // Append id and media info
+            data["id"] = crypto.randomUUID();
+            data["mediaInfo"] = {
+              mediaBrowser: mediaBrowser,
+              mediaType: mediaType,
+              filterType: filterType ? `${filterType}` : "",
+            };
+
+            return data;
           })
         );
 

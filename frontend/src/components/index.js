@@ -21,6 +21,10 @@ import Button from "./Generic/Button";
 import InputField from "./Generic/InputField";
 import DropdownMenu from "./Generic/DropdownMenu";
 import InputError from "./Generic/InputError";
+import CategorySection from "./Generic/CategorySection";
+import CategoryHead from "./Generic/CategoryHead";
+import CategoryList from "./Generic/CategoryList";
+import VideoCard from "./Generic/VideoCard";
 
 export {
   Header,
@@ -35,4 +39,8 @@ export {
   InputField,
   DropdownMenu,
   InputError,
+  CategorySection,
+  CategoryHead,
+  CategoryList,
+  VideoCard,
 };
