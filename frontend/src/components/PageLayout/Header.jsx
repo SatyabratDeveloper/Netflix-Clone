@@ -23,8 +23,8 @@ const Header = () => {
 
   return (
     <div
-      className={`w-full top-0 transition-all duration-300 ${
-        userStatus ? "fixed" : "absolute"
+      className={`w-full top-0 transition-all duration-300  ${
+        userStatus ? "fixed z-50" : "absolute"
       } ${
         isScrolled && userStatus
           ? "bg-black"
