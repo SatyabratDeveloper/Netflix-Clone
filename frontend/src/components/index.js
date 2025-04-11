@@ -25,6 +25,7 @@ import CategorySection from "./Generic/CategorySection";
 import CategoryHead from "./Generic/CategoryHead";
 import CategoryList from "./Generic/CategoryList";
 import VideoCard from "./Generic/VideoCard";
+import MediaCard from "./Generic/MediaCard";
 
 export {
   Header,
@@ -43,4 +44,5 @@ export {
   CategoryHead,
   CategoryList,
   VideoCard,
+  MediaCard,
 };
